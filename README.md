@@ -7,8 +7,7 @@
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/tomferreira/action-bundler-audit?logo=github&sort=semver)](https://github.com/tomferreira/action-bundler-audit/releases)
 [![action-bumpr supported](https://img.shields.io/badge/bumpr-supported-ff69b4?logo=github&link=https://github.com/haya14busa/action-bumpr)](https://github.com/haya14busa/action-bumpr)
 
-![github-pr-review demo](https://user-images.githubusercontent.com/3797062/73162963-4b8e2b00-4132-11ea-9a3f-f9c6f624c79f.png)
-![github-pr-check demo](https://user-images.githubusercontent.com/3797062/73163032-70829e00-4132-11ea-8481-f213a37db354.png)
+![Example comment made by the action, with github-pr-review](/.github/images/example-github-pr-review.png)
 
 This action runs [bundler-audit](https://github.com/rubysec/bundler-audit) with
 [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve
