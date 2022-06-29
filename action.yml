@@ -57,5 +57,5 @@ runs:
         INPUT_WORKDIR: ${{ inputs.workdir }}
 
 branding:
-  icon: 'check'
-  color: 'blue'
+  icon: 'check-circle'
+  color: 'red'
