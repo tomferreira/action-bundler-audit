@@ -1,0 +1,61 @@
+name: 'Run bundler-audit with reviewdog'
+description: '🐶 Run bundler-audit with reviewdog on pull requests to improve code review experience.'
+author: 'tomferreira'
+inputs:
+  github_token:
+    description: 'GITHUB_TOKEN'
+    default: '${{ github.token }}'
+  bundler_audit_version:
+    description: 'Bundler-audit version'
+  bundler_audit_flags:
+    description: 'Bundler-audit flags. (bundler-audit check --format json <bundler_audit_flags>)'
+    default: ''
+  tool_name:
+    description: 'Tool name to use for reviewdog reporter'
+    default: 'bundler-audit'
+  workdir:
+    description: 'Working directory relative to the root directory.'
+    default: '.'
+  ### Flags for reviewdog ###
+  level:
+    description: 'Report level for reviewdog [info,warning,error]'
+    default: 'error'
+  reporter:
+    description: 'Reporter of reviewdog command [github-check,github-pr-review].'
+    default: 'github-check'
+  filter_mode:
+    description: |
+      Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
+      Default is added.
+    default: 'added'
+  fail_on_error:
+    description: |
+      Exit code for reviewdog when errors are found [true,false]
+      Default is `false`.
+    default: 'false'
+  reviewdog_flags:
+    description: 'Additional reviewdog flags'
+    default: ''
+runs:
+  using: 'composite'
+  steps:
+    - uses: reviewdog/action-setup@v1
+      with:
+        reviewdog_version: v0.14.1
+    - run: $GITHUB_ACTION_PATH/script.sh
+      shell: bash
+      env:
+        INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
+        INPUT_BUNDLER_AUDIT_VERSION: ${{ inputs.bundler_audit_version }}
+        INPUT_BUNDLER_AUDIT_FLAG: ${{ inputs.bundler_audit_flag }}
+        INPUT_TOOL_NAME: ${{ inputs.tool_name }}
+        INPUT_LEVEL: ${{ inputs.level }}
+        INPUT_REPORTER: ${{ inputs.reporter }}
+        INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
+        INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
+        INPUT_REVIEWDOG_FLAGS: ${{ inputs.reviewdog_flags }}
+        INPUT_WORKDIR: ${{ inputs.workdir }}
+
+branding:
+  icon: 'check'
+  color: 'blue'
