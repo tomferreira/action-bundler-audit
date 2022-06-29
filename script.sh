@@ -37,7 +37,7 @@ echo '::group:: Running bundler-audit with reviewdog 🐶 ...'
 bundler-audit update
 
 bundler-audit check ${INPUT_BUNDLER_AUDIT_FLAGS} --format json \
-  | ruby rdjson_formatter.rb \
+  | ruby ${GITHUB_ACTION_PATH}/rdjson_formatter.rb \
   | reviewdog -f=rdjson \
     -name="${INPUT_TOOL_NAME}" \
     -reporter="${INPUT_REPORTER}" \
