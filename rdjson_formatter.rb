@@ -29,7 +29,7 @@ diagnostics = results.map do |result|
   criticality_rank = CRITICALITY_RANK[result.dig("advisory", "criticality").to_sym]
   max_criticality_rank = [max_criticality_rank, criticality_rank].max 
 
-  line = `grep -n -E '^\s{2}#{gem_name}' #{GEMFILE_LOCK_PATH} | cut -d : -f 1`.to_i
+  line = `grep -n -E '^\s{4}#{gem_name}' #{GEMFILE_LOCK_PATH} | cut -d : -f 1`.to_i
 
   diagnostic = {
     message: message,
