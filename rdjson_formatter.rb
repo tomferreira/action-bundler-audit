@@ -11,7 +11,7 @@ CRITICALITY_RANK = {
   critical: 3,
 }
 
-SEVERITY = ["UNKNOWN", "INFO", "WARNING", "ERROR"]
+SEVERITY = ["UNKNOWN_SEVERITY", "INFO", "WARNING", "ERROR"]
 
 input_json = JSON.parse(ARGF.read)
 
