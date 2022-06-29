@@ -47,7 +47,7 @@ runs:
       env:
         INPUT_GITHUB_TOKEN: ${{ inputs.github_token }}
         INPUT_BUNDLER_AUDIT_VERSION: ${{ inputs.bundler_audit_version }}
-        INPUT_BUNDLER_AUDIT_FLAG: ${{ inputs.bundler_audit_flag }}
+        INPUT_BUNDLER_AUDIT_FLAGS: ${{ inputs.bundler_audit_flags }}
         INPUT_TOOL_NAME: ${{ inputs.tool_name }}
         INPUT_LEVEL: ${{ inputs.level }}
         INPUT_REPORTER: ${{ inputs.reporter }}
