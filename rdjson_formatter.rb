@@ -9,6 +9,7 @@ CRITICALITY_RANK = {
   medium: 2,
   high: 3,
   critical: 3,
+  nil => 1,
 }
 
 SEVERITY = ["UNKNOWN_SEVERITY", "INFO", "WARNING", "ERROR"]
@@ -26,7 +27,7 @@ diagnostics = results.map do |result|
     Solution: upgrade to #{result.dig("advisory", "patched_versions").map{|v| "'#{v}'"}.join(', ')}
   EOS
 
-  criticality_rank = CRITICALITY_RANK[result.dig("advisory", "criticality").to_sym]
+  criticality_rank = CRITICALITY_RANK[result.dig("advisory", "criticality")&.to_sym]
   max_criticality_rank = [max_criticality_rank, criticality_rank].max 
 
   line = `grep -n -E '^\s{4}#{gem_name}' #{GEMFILE_LOCK_PATH} | cut -d : -f 1`.to_i
